@@ -1,0 +1,51 @@
+.vcenter {
+    display: inline-block;
+    vertical-align: middle;
+    float: none;
+}
+.scrolloff {
+    pointer-events: none;
+}
+.sections-header {
+    background: greenyellow;
+}
+.sections-header .slide {
+    display: inline-block;
+    border: 1px solid #3c261b;
+    border-right-width: 0;
+    border-left-width: 0;
+    bottom: 10px;
+    height: 1px;
+    width: 150px;
+    margin-left: -5px;
+    vertical-align: middle;
+}
+
+body {
+    font-family: 'Roboto', sans-serif;
+}
+
+.sections-header .section-title {
+    font-size: 1.5em;
+    font-family: Neucha, cursive, sans-serif;
+}
+
+/*section:before {*/
+    /*display: block;*/
+    /*content: " ";*/
+    /*height: 70px;      !* Give height of your fixed element *!*/
+    /*margin-top: -70px; !* Give negative margin of your fixed element *!*/
+    /*visibility: hidden;*/
+/*}*/
+
+/*HERO*/
+.hero {
+    background: url("../images/herobg.jpg") no-repeat;
+    background-size: 100%;
+}
+
+/*DECORATION*/
+.description {
+    margin-top: auto;
+    height: 100%;
+}

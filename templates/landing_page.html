@@ -1,0 +1,257 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ателье праздничного декора "Настроение"</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.1/css/font-awesome.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Neucha&amp;subset=cyrillic" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Russo+One&amp;subset=cyrillic" rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.theme.css' %}">
+    <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}">
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+    <style>
+        body {
+            font-family: 'Roboto', sans-serif;
+        }
+
+        html, body {
+            height: 100%;
+            margin: 0px;
+            padding: 0px;
+            position: relative;
+        }
+
+        .hero {
+            height: 100%;
+            position: relative;
+        }
+
+        .focus {
+            position: absolute;
+            top: 50%;
+            margin-top: -2em;
+            width: 100%;
+        }
+
+        .callbtn {
+            margin-top: 2em;
+        }
+
+        .callbtn a {
+            font-size: 2.5em;
+            padding: 10px 30px;
+            font-family: 'Russo One', sans-serif;
+        }
+
+        /*TOPROW*/
+        .toprow {
+        {#            height: 100px;#} padding-top: 20px;
+            padding-bottom: 20px;
+            font-family: 'Russo One', sans-serif;
+            font-size: 2em;
+            background-color: rgba(0, 0, 0, .6);
+            color: whitesmoke;
+            z-index: 25;
+        }
+
+        .toprow.affix {
+            top: 0;
+            width: 100%;
+            position: fixed;
+        }
+
+        .toprow .phone {
+        {#            white-space: nowrap;#}
+        }
+
+        .toprow .calllink {
+            color: white;
+            font-size: 1.5em;
+            vertical-align: middle;
+            margin-left: 10px;
+        }
+
+        .toprow .calllink i {
+
+        }
+
+        .toprow .socialbtns {
+            padding-top: 10px;
+        }
+
+        .item img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+            margin-left: auto;
+            margin-right: auto
+        }
+
+        #decoration .sections-header {
+            margin-bottom: 20px;
+        }
+
+        .tab-content {
+            margin-top: 20px;
+            margin-bottom: 20px;
+        }
+
+    </style>
+</head>
+<body id="page">
+
+<div class="hero text-center">
+    <div class="toprow" data-spy="affix" data-offset-top="0">
+        <div class="container">
+            <div class="row">
+                <div class="socialbtns col-sm-10 col-sm-offset-1 col-md-3 col-md-offset-0">
+                    <span class='st_vkontakte_large' displayText='Vkontakte'></span>
+                    <span class='st_odnoklassniki_large' displayText='Odnoklassniki'></span>
+                    <span class='st_instagram_large' displayText='Instagram Badge' st_username='inwhite'></span>
+                </div>
+                <div class="col-sm-10 col-sm-offset-1 col-md-4 col-md-offset-5">
+                    <span class="phone">+7 800 555 77 20    <a href class="calllink"><i class="fa fa-phone-square"
+                                                                                        aria-hidden="true"></i></a></span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="focus">
+        <div class="container">
+            <div class="row logo">
+                <img id="logo" src="{% static 'images/logo.png' %}" alt="Ателье праздничного декора 'Настроение'"
+                     class="center-block img-responsive">
+            </div>
+            {#            <div class="row title">#}
+            {#                <div class="col-sm-12">#}
+            {#                    <span>Ателье праздничного декора</span>#}
+            {#                </div>#}
+            {#            </div>#}
+            <div class="row callbtn">
+                <a href="#page" class="smooth-scroll btn btn-primary">Заказать обратный звонок</a>
+            </div>
+        </div>
+    </div>
+</div>
+
+<section id="decoration">
+    <div class="sections-header text-center">
+        <div>
+            <div class="slide wow slideInLeft"></div>
+            <div class="slide wow slideInRight"></div>
+        </div>
+        <span class="text-uppercase section-title">Оформление праздников</span>
+        <div>
+            <div class="slide wow slideInLeft"></div>
+            <div class="slide wow slideInRight"></div>
+        </div>
+    </div>
+    <div class="container">
+        <ul class="nav nav-pills nav-justified center-pills" role="tablist">
+            {% for d in decors %}
+                <li role="presentation" class="">
+                    <a href="#tab-{{ d.slug }}" aria-controls="{{ d.slug }}" role="tab"
+                       data-toggle="pill">{{ d.title }}</a>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="tab-content">
+            {% for d in decors %}
+                <div role="tabpanel" class="tab-pane fade" id="tab-{{ d.slug }}">
+                    {% include "decor_carousel.html" with decor=d %}
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+
+
+</section>
+<section id="contacts">
+    <div class="sections-header text-center">
+        <div>
+            <div class="slide wow slideInLeft"></div>
+            <div class="slide wow slideInRight"></div>
+        </div>
+        <span class="text-uppercase section-title">Контакты</span>
+        <div>
+            <div class="slide wow slideInLeft"></div>
+            <div class="slide wow slideInRight"></div>
+        </div>
+    </div>
+    <div class="map-container">
+        <iframe id="map" width="100%" height="450" frameborder="0" style="border:0;" class="scrolloff"
+                src="https://www.google.com/maps/embed/v1/place?q=%D0%9A%D1%80%D0%B0%D1%81%D0%BD%D0%BE%D0%B0%D1%80%D0%BC%D0%B5%D0%B9%D1%81%D0%BA%D0%B8%D0%B9%20%D0%BF%D1%80%D0%BE%D1%81%D0%BF%D0%B5%D0%BA%D1%82%2C%2017%2C%20%D0%A2%D1%83%D0%BB%D0%B0%2C%20%D0%A2%D1%83%D0%BB%D1%8C%D1%81%D0%BA%D0%B0%D1%8F%20%D0%BE%D0%B1%D0%BB%D0%B0%D1%81%D1%82%D1%8C%2C%20%D0%A0%D0%BE%D1%81%D1%81%D0%B8%D1%8F&key=AIzaSyAX8VY1Gqb0xphcj3IJ64h61dqLVjpsgSQ"
+                allowfullscreen></iframe>
+        <div class="contacts">
+
+        </div>
+    </div>
+</section>
+{#<!--scripts-->#}
+{#<script src="{% static 'js/jquery.min.js' %}"></script>#}
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/jquery.easing.1.3.min.js' %}"></script>
+<script src="{% static 'js/wow.min.js' %}"></script>
+<script src="{% static 'js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'js/lightbox.min.js' %}"></script>
+<script type="text/javascript" src="http://w.sharethis.com/button/buttons.js"></script>
+<script type="text/javascript">stLight.options({
+    publisher: "443f4616-ebfd-42b6-91c1-5be77498d146",
+    doNotHash: false,
+    doNotCopy: false,
+    hashAddressBar: false
+});</script>
+<script>
+    $(document).ready(function () {
+        new WOW().init();
+        $('a.smooth-scroll').on('click', function (event) {
+            var $anchor = $(this);
+            $('html, body').stop().animate({
+                scrollTop: $($anchor.attr('href')).offset().top
+            }, 1500, 'easeInOutExpo');
+            event.preventDefault();
+        });
+        {% for i in decors %}
+            $("#decor-{{ i.slug }}-slider").owlCarousel({
+
+                navigation: true, // Show next and prev buttons
+                slideSpeed: 500,
+                paginationSpeed: 400,
+                singleItem: true,
+                center: true,
+                lazyLoad: true
+                {#                autoHeight: true#}
+                // "singleItem:true" is a shortcut for:
+                // items : 1,
+                // itemsDesktop : false,
+                // itemsDesktopSmall : false,
+                // itemsTablet: false,
+                // itemsMobile : false
+
+            });
+        {% endfor %}
+
+        $('#map').addClass('scrolloff'); // set the pointer events to none on doc ready
+        $('.map-container').on('click', function () {
+            $('#map').removeClass('scrolloff'); // set the pointer events true on click
+        });
+        // you want to disable pointer events when the mouse leave the canvas area;
+        $(".map-container").mouseleave(function () {
+            $('#map').addClass('scrolloff'); // set the pointer events to none when mouse leaves the map area
+        });
+        $('#decoration .nav-pills').find('li').first().find('a').first().tab('show');
+    });
+</script>
+</body>
+</html>
