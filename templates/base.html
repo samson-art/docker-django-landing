@@ -1,0 +1,104 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="description" content="">
+    <meta name="keywords" content="">
+    <meta name="author" content="">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Ателье праздничного декора "Настроение"</title>
+    <link rel="stylesheet" href="{% static 'css/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/animate.css' %}">
+    <link href="https://fonts.googleapis.com/css?family=Merriweather:400,400i,700,700i&amp;subset=cyrillic"
+          rel="stylesheet">
+    <link rel="stylesheet" href="{% static 'css/owl.carousel.css' %}">
+    <link rel="stylesheet" href="{% static 'css/lightbox.css' %}">
+    {#    <link rel="stylesheet" href="{% static 'css/owl.theme.default.min.css' %}">#}
+    {#    <link rel="stylesheet" href="{% static 'css/owl.transitions.css' %}">#}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body id="page">
+
+    {% block header %}
+        <div class="toprow" data-spy="affix" data-offset-top="0">
+            <div class="container">
+                <ul class="navs">
+                    {% for m in navs %}
+                        <li>
+                            {% if m.dropdowns %}
+                                <div class="dropdown">
+                                    <a href="#dropdown-{{ m.id }}" class="dropdown-toggle" id="dropdown-{{ m.id }}" data-toggle="dropdown" data-target="#dropdown-menu-{{ m.id }}" role="button" aria-haspopup="true" aria-expanded="false">{{ m.title }}</a>
+                                <ul class="dropdown-menu" aria-labelledby="dropdown-{{ m.id }}" role="tablist">
+                                    {% for d in m.dropdowns %}
+                                        <li><a href="{{ m.url }}{{ d.url }}">{{ d.title }}</a></li>
+                                    {% endfor %}
+                                </ul>
+                                </div>
+                            {% endif %}
+                            {% if not m.dropdowns %}
+                                <a href="{{ m.url }}">{{ m.title }}</a>
+                            {% endif %}
+                        </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        <div class="hero text-center">
+            <div class="focus">
+                <div class="container">
+
+                </div>
+            </div>
+        </div>
+    {% endblock %}
+
+
+
+<div id="content" class="content">
+    {% block content %}
+    {% endblock %}
+</div>
+
+{% block footer %}
+    <footer class="page-footer">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="logo"><span class="brand"></span>"Настроение"</p>
+                    <p>© 2017 | Privacy Policy</p>
+                </div>
+                <div class="col-md-4 nav">
+                    <ul>
+                        {% for n in navs %}
+                            <li>
+                                <a href="{{ n.url }}{{ n.anchor }}">{{ n.title }}</a>
+                            </li>
+                        {% endfor %}
+                    </ul>
+                </div>
+                <div class="col-md-4 sclbtn">
+                    <ul>
+                        <li>
+                            <a href="http://vk.com/" target="_blank">VK</a>
+                        </li>
+                        <li>
+                            <a href="http://instagram.com/" target="_blank">Instagram</a>
+                        </li>
+                    </ul>
+
+                </div>
+            </div>
+        </div>
+    </footer>
+{% endblock %}
+<!--scripts-->
+<script src="{% static 'js/jquery-3.1.1.min.js' %}"></script>
+<script src='{% static 'js/jquery-ui.min.js' %}'></script>
+<script src="{% static 'js/owl.carousel.js' %}"></script>
+<script src="{% static 'js/lightbox.js' %}"></script>
+<script src="{% static 'js/bootstrap.js' %}"></script>
+<script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>

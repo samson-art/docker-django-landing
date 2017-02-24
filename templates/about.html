@@ -1,0 +1,66 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <section id="about">
+        <div class="container">
+            <div class="sections-header">
+                    <span class="section-title">
+                        <h2>
+                            Ателье праздничного декора<br><span class="grey-title"> </span><span class="red-title">"Настроение"</span>
+                        </h2>
+
+                    </span>
+            </div>
+            <div class="row">
+                <div class="col-md-4">
+                    <p class="about">
+
+            </p>
+                </div>
+                <div class="col-md-8 ">
+
+                </div>
+            </div>
+
+        </div>
+        <div class="divider">
+            <div class="container" style="height: 350px">
+                <div class="row" style="height: 350px">
+                    <div class="col-md-4 panel">
+                        <p>From concept to execution, Event planner works with your vision and makes it more impactful than you could have imagined. For over 10 years, Event planner has worked to design, plan, coordinate and produce events that transform the ordinary to the truly unforgettable for clients and their guests.
+
+As your full service Event Planner, we are committed to stunning design and the ultimate attention to detail to ensure an event that truly reflects who you are.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <section id="trusts">
+        <div class="container">
+            <div class="sections-header">
+                <span class="section-title">
+                    <h2>Наши клиенты</h2>
+                </span>
+            </div>
+            <br>
+            <div id="trusts-slider" class="owl-carousel">
+                {% for t in trusts %}
+
+                        <div class="trust item vcenter">
+                            {% if t.logo and t.logo != '' %}
+                                <a href="{% static t.get_box_url %}" data-lightbox="trusts" data-title="{{ t.name }}">
+                                <img src="{% static t.get_logo_url %}" alt="{{ t.name }}" class="img-responsive" title="{{ t.name }}" />
+                            </a>
+                            {% endif %}
+                            {% if not t.logo or t.logo == '' %}
+                                <p class="title">{{ t.name }}</p>
+                            {% endif %}
+                        </div>
+
+                {% endfor %}
+            </div>
+        </div>
+    </section>
+
+{% endblock %}

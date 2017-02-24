@@ -1,0 +1,30 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block content %}
+    <div class="container" id="portfolio">
+        <div class="row">
+            <div class="col-md-5 vcenter">
+                <img src="{% static portfolio.mainimg %}" alt="{{ portfolio.mainimg.title }}" class="img-responsive mainimg">
+            </div><!-----><div class="col-md-7 vcenter">
+                <h2>{{ portfolio.caption }}</h2>
+                <p class="article">
+                    {{ portfolio.article }}
+                </p>
+            </div>
+        </div>
+        <div class="gallery">
+            {% for p in portfolio.photos %}
+                <div class="col-md-3 image">
+                    <img src="{% static p.get_slide_url %}" alt="{{ p.title }}" class="img-responsive">
+                    <div class="mask">
+
+                        <a href="{% static p.get_slide_url %}" data-lightbox="{{ portfolio.title }}" data-title="{{ p.title }}">
+
+                        </a>
+                    </div>
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+{% endblock %}

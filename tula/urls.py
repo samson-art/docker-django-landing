@@ -14,15 +14,26 @@ Including another URLconf
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
 from django.conf.urls import url, include
+from django.conf.urls.static import static
 from django.contrib import admin
+
 import tula.views as myviews
-from django.contrib.staticfiles.urls import staticfiles_urlpatterns
+from tula import settings
+from filebrowser.sites import site
+
+# site.storage.location = 'assets/'
 
 urlpatterns = [
+    url(r'^admin/filebrowser/', include(site.urls)),
     url(r'^grappelli/', include('grappelli.urls')),
     url(r'^admin/', admin.site.urls),
-    url(r'^photologue/', include('photologue.urls', namespace='photologue')),
     url(r'^$', myviews.landing_page, name='landing_page'),
+    url(r'^portfolio/weddings', myviews.weddings, name='weddings'),
+    url(r'^portfolio/graduation', myviews.graduation, name='graduation'),
+    url(r'^portfolio/bdays', myviews.bdays, name='bdays'),
+    url(r'^portfolio/kids', myviews.kids, name='kids'),
+    url(r'^about/', myviews.about, name='about'),
+    url(r'^price/', myviews.price, name='price')
 ]
 
-urlpatterns += staticfiles_urlpatterns()
+urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

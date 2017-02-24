@@ -1,7 +1,7 @@
 Django
 Django-grappelli
-Django-filebrowser
 Pillow
-django-photologue
+Django-imagekit
+Django-filebrowser
 Pytz
 dj-static
